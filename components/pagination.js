@@ -74,9 +74,8 @@ const Pagination = ({
       }
 
       .pagination a.active {
-        background-color: #4caf50;
-        color: white;
-        border: 1px solid #4caf50;
+        background-color: #ddd;
+        border: 1px solid #ddd;
       }
 
       .pagination a:hover:not(.active) {

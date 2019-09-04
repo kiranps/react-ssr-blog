@@ -17,14 +17,20 @@ const Home = ({ blogs, page }) => (
       {blogs.map((x, i) => (
         <Link key={i} href={`/blog/${x.id}`}>
           <a className="card">
-            <img className="feature_image" src={x.feature_image} />
-            <h3>{x.title}</h3>
-            <div>{new Date(x.published_on).toLocaleDateString()}</div>
-            <p>{x.description}</p>
-            <div className="author">
-              <img src={x.author_details.profile_picture} />
-              <div>
-                <div>{`${x.author_details.screen_name}`}</div>
+            <img className="feature_image" alt="cover" src={x.feature_image} />
+            <div className="content">
+              <div className="header">
+                <div className="title">{x.title}</div>
+                <div className="date">
+                  {new Date(x.published_on).toLocaleDateString()}
+                </div>
+              </div>
+              <p>{x.description}</p>
+              <div className="footer">
+                <img src={x.author_details.profile_picture} />
+                <div className="author_name">
+                  {x.author_details.screen_name || ""}
+                </div>
               </div>
             </div>
           </a>
@@ -43,37 +49,112 @@ const Home = ({ blogs, page }) => (
         flex-direction: row;
         justify-content: space-around;
       }
+
       .card {
-        padding: 18px 18px 24px;
         margin-top: 32px;
-        width: 220px;
+        width: 280px;
         text-align: left;
         text-decoration: none;
         color: #434343;
-        border: 1px solid #9b9b9b;
+        overflow: hidden;
+        border-radius: 5px 5px 2px 2px;
       }
+
       .card:hover {
         border-color: #067df7;
       }
+
       .card h3 {
         margin: 0;
         font-size: 14px;
       }
+
       .card p {
         margin: 0;
-        padding: 12px 0 0;
+        padding-top: 12px;
         font-size: 13px;
-        color: #333;
+        text-align: left;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 46px;
+        color: #4a5568;
       }
+
+      .card .content {
+        padding: 14px;
+        border: 1px solid #9b9b9b;
+        border-top: none;
+        border-radius: 0 0 2px 2px;
+        height: 140px;
+      }
+
       .card .feature_image {
         width: 100%;
+        height: 140px;
+        display: block;
       }
-      .card .author {
+
+      .card img.feature_image {
+        position: relative;
+        border: 1px solid #9b9b9b;
+        box-sizing: border-box;
+      }
+
+      .card img.feature_image:after {
+        content: "\f1c5"" " attr(alt);
+        font-family: FontAwesome;
+
+        box-sizing: border-box;
+        text-align: center;
+        padding-top: 60px;
+
+        font-size: 16px;
+        color: #636363;
+
+        display: block;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #dedede;
+      }
+
+      .card .header {
+        width: 100%;
+      }
+
+      .card .header .title {
+        font-weight: bold;
+        text-align: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #1a202c;
+      }
+
+      .card .header .date {
+        font-size: 14px;
+        padding-top: 5px;
+      }
+
+      .card .footer {
         display: flex;
+        width: 100%;
+        padding-top: 10px;
       }
-      .card .author img {
+
+      .card .footer img {
         width: 30px;
         height: 30px;
+        border-radius: 50%;
+      }
+
+      .card .footer .author_name {
+        padding: 7px 0 0 10px;
+        font-size: 13px;
       }
     `}</style>
   </div>
