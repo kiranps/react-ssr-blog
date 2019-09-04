@@ -83,7 +83,7 @@ const Home = ({ blogs, page }) => (
 
       .card .content {
         padding: 14px;
-        border: 1px solid #9b9b9b;
+        border: 1px solid #cbd5e0;
         border-top: none;
         border-radius: 0 0 2px 2px;
         height: 140px;
@@ -97,7 +97,7 @@ const Home = ({ blogs, page }) => (
 
       .card img.feature_image {
         position: relative;
-        border: 1px solid #9b9b9b;
+        border: 1px solid #cbd5e0;
         box-sizing: border-box;
       }
 
